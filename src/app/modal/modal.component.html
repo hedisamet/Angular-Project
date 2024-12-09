@@ -1,0 +1,36 @@
+<mat-dialog-content>
+    <form [formGroup]="form" class="event-form">
+        <mat-form-field appearance="fill">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" [readonly]="isEditMode">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="titre">
+            <mat-error *ngIf="form.get('titre')?.hasError('required')">
+                Titre is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date Range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate formControlName="dateDebut" placeholder="Start date">
+                <input matEndDate formControlName="dateFin" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="form.get('dateDebut')?.hasError('required') || form.get('dateFin')?.hasError('required')">
+                Date range is required
+            </mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="!form.valid">
+        {{isEditMode ? 'Update' : 'Create'}}
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,117 @@
+.dashboard-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 64px);
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+  padding: 12px;
+}
+
+mat-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  padding: 20px;
+}
+
+mat-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+mat-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+mat-card-subtitle {
+  font-size: 2.5rem;
+  color: #3498db;
+  font-weight: 700;
+  margin: 8px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+  font-size: 36px;
+  height: 36px;
+  width: 36px;
+  margin-bottom: 16px;
+}
+
+/* Card-specific colors */
+mat-card:nth-child(1) mat-card-subtitle {
+  color: #2196f3; /* Blue for Members */
+}
+
+mat-card:nth-child(2) mat-card-subtitle {
+  color: #4caf50; /* Green for Events */
+}
+
+mat-card:nth-child(3) mat-card-subtitle {
+  color: #9c27b0; /* Purple for Teachers */
+}
+
+mat-card:nth-child(4) mat-card-subtitle {
+  color: #ff9800; /* Orange for Students */
+}
+
+/* Card-specific icon colors */
+mat-card:nth-child(1) .card-icon {
+  color: #2196f3; /* Blue for Members */
+}
+
+mat-card:nth-child(2) .card-icon {
+  color: #4caf50; /* Green for Events */
+}
+
+mat-card:nth-child(3) .card-icon {
+  color: #9c27b0; /* Purple for Teachers */
+}
+
+mat-card:nth-child(4) .card-icon {
+  color: #ff9800; /* Orange for Students */
+}
+
+@media (max-width: 600px) {
+  .stats-cards {
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  .dashboard-container {
+    padding: 16px;
+  }
+
+  mat-card {
+    padding: 16px;
+  }
+
+  mat-card-title {
+    font-size: 1.1rem;
+  }
+
+  mat-card-subtitle {
+    font-size: 2rem;
+  }
+}
