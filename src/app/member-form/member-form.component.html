@@ -23,7 +23,6 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>      
-
     <br>
     <mat-form-field appearance="fill">
         <mat-select matInput placeholder="type" formControlName="type">
@@ -39,6 +38,28 @@
     <mat-form-field appearance="fill">
         <input matInput placeholder="email" formControlName="email">
     </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      
+      
+
+
     <br>
     <button type="submit" mat-raised-button color="primary">Submit</button>
 </form>

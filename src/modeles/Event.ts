@@ -1,7 +1,7 @@
 export interface evt {
-  id: String;
-  titre: String;
-  datedebut: String;
-  datefin: String;
-  lieu: String;
+  id: string;
+  titre: string;
+  dateDebut: string;
+  dateFin: string;
+  lieu: string;
 }

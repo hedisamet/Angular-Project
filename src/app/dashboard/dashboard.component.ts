@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from '../../services/member.service';
-import { EventService } from '../../services/event.service';
+import { evtService } from '../../services/evt.service';
 import { Member } from 'src/modeles/Member';
 
 @Component({
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private memberService: MemberService,
-    private eventService: EventService
+    private evtService: evtService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadEvents(): void {
-    this.eventService.getAllEvent().subscribe((events: any[]) => {
+    this.evtService.getAll().subscribe((events: any[]) => {
       this.nb_Events = events.length;
     });
   }

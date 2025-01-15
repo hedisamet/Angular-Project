@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { EvtService } from 'src/services/evt.service';
-import { Evt } from 'src/models/evt';
+import { evtService } from 'src/services/evt.service';
+import { evt } from 'src/modeles/Event';
 import { ModalComponent } from '../modal/modal.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { map } from 'rxjs/operators';
@@ -12,10 +12,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  dataSource: Evt[] = [];
-  displayedColumns: string[] = ['1', '2', '3', '4', '5'];
+  dataSource: evt[] = [];
+  displayedColumns: string[] = ['1', '2', '3', '4', '5','6'];
 
-  constructor(private Es: EvtService, private dialog: MatDialog) {}
+  constructor(private Es: evtService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.fetch();
@@ -38,10 +38,10 @@ export class EventComponent implements OnInit {
 
   open(): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.position = { top: '50%', left: '50%' };
-    dialogConfig.panelClass = 'centered-dialog';
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.position = { top: '50%', left: '50%' };
+    // dialogConfig.panelClass = 'centered-dialog';
     
     const dialogRef = this.dialog.open(ModalComponent, dialogConfig);
     
@@ -57,10 +57,10 @@ export class EventComponent implements OnInit {
 
   open1(id: string): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.position = { top: '50%', left: '50%' };
-    dialogConfig.panelClass = 'centered-dialog';
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // //dialogConfig.position = { top: '50%', left: '50%' };
+    // dialogConfig.panelClass = 'centered-dialog';
     
     this.Es.getEventById(id).subscribe((evt) => {
       dialogConfig.data = evt;

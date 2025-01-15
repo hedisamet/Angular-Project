@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Evt } from 'src/models/evt';
+import { evt } from 'src/modeles/Event';
 
 @Component({
   selector: 'app-modal',
@@ -14,20 +14,21 @@ export class ModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Evt | null
+    @Inject(MAT_DIALOG_DATA) public data: evt | null
   ) {}
 
   ngOnInit(): void {
-    this.initForm();
+    this.initForm();  // Initialize the form first
+    
     if (this.data) {
       this.isEditMode = true;
-      // Parse the dates correctly
+      // Parse the dates from dd/mm/yyyy format to Date objects
       const startDate = this.parseDate(this.data.dateDebut);
       const endDate = this.parseDate(this.data.dateFin);
-      
+    
       this.form.patchValue({
-        id: this.data.id,
         titre: this.data.titre,
+        lieu: this.data.lieu,
         dateDebut: startDate,
         dateFin: endDate
       });
@@ -35,13 +36,11 @@ export class ModalComponent implements OnInit {
   }
 
   parseDate(dateStr: string): Date {
-    // Handle different date formats
-    if (dateStr.includes('/')) {
-      const [day, month, year] = dateStr.split('/');
-      return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-    }
-    return new Date(dateStr);
+    if (!dateStr) return new Date();
+    const [day, month, year] = dateStr.split('/').map(num => parseInt(num));
+    return new Date(year, month - 1, day);
   }
+
 
   formatDate(date: Date): string {
     const day = date.getDate().toString().padStart(2, '0');
@@ -52,7 +51,7 @@ export class ModalComponent implements OnInit {
 
   initForm(): void {
     this.form = new FormGroup({
-      id: new FormControl('', [Validators.required]),
+      lieu: new FormControl('', [Validators.required]),
       titre: new FormControl('', [Validators.required]),
       dateDebut: new FormControl(null, [Validators.required]),
       dateFin: new FormControl(null, [Validators.required])
@@ -63,6 +62,7 @@ export class ModalComponent implements OnInit {
     if (this.form.valid) {
       const formValue = {
         ...this.form.value,
+        lieu: this.form.value.lieu,
         dateDebut: this.formatDate(this.form.value.dateDebut),
         dateFin: this.formatDate(this.form.value.dateFin)
       };
