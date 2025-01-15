@@ -1,20 +1,26 @@
 {
   "members": [
     {
-      "id": "e833",
-      "cin": "1124",
-      "cv": "none",
-      "name": "si mzid",
-      "type": "ATS",
-      "createdDate": "2024-09-25T10:02:30.538Z"
+      "id": "7bcc",
+      "cin": "afafr",
+      "nom": "gfdtg",
+      "prenom": "ezgrr",
+      "dateNaissance": "17/01/2025",
+      "cv": "lpgrze",
+      "type": "etudiant",
+      "email": "zger",
+      "createdDate": "2025-01-15T15:26:46.333Z"
     },
     {
-      "id": "007c",
-      "cin": "11152749",
-      "cv": "cv",
-      "name": "hedi",
-      "type": "ing",
-      "createdDate": "2024-12-04T20:37:41.396Z"
+      "id": "1b0c",
+      "cin": "5724",
+      "nom": "fnjaekzl",
+      "prenom": "feajnklz",
+      "dateNaissance": "07/01/2025",
+      "cv": "fazlke",
+      "type": "etudiant",
+      "email": "hedi",
+      "createdDate": "2025-01-15T15:38:52.284Z"
     }
   ],
   "evenements": [

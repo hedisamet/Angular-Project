@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="sub()" style="margin-top: 50px;">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
 
     <mat-form-field appearance="fill">
         <input matInput placeholder="cin" formControlName="cin">
@@ -6,7 +6,30 @@
 
     <br>
     <mat-form-field appearance="fill">
-        <input matInput placeholder="name" formControlName="name">
+        <input matInput placeholder="nom" formControlName="nom">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="prenom" formControlName="prenom">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Date de naissance</mat-label>
+        <input 
+          matInput 
+          placeholder="MM/DD/YYYY" 
+          [matDatepicker]="picker" 
+          formControlName="dateNaissance">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>      
+
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-select matInput placeholder="type" formControlName="type">
+            <mat-option value="etudiant">Étudiant</mat-option>
+            <mat-option value="enseignant">Enseignant Chercheur</mat-option>
+        </mat-select>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
@@ -14,9 +37,8 @@
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-        <input matInput placeholder="type" formControlName="type">
+        <input matInput placeholder="email" formControlName="email">
     </mat-form-field>
     <br>
-
-    <button type="submit">submit</button>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
 </form>
